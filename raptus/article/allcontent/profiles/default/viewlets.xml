@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <object>
 
- <order manager="plone.belowcontentbody" skinname="*">
+ <order manager="plone.belowcontent" skinname="*">
   <viewlet name="raptus.article.allcontent" insert-before="*" />
  </order>
 

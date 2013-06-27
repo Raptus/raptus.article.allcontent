@@ -10,7 +10,8 @@
        tal:condition="view/articles">
     <tal:item repeat="item view/articles">
     <div class="article"
-         tal:attributes="class item/class">
+         tal:attributes="class item/class;
+                         id string:allcontent-${item/brain/getId};">
       <metal:manage use-macro="context/raptus_article_macros/macros/manage" />
       <div tal:replace="structure item/content" />
     </div>

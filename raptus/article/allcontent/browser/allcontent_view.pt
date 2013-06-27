@@ -11,38 +11,53 @@
                      text here/getText;
                      is_editable context/@@plone_context_state/is_editable;">
     <tal:all condition="not: view/simple">
-      <div tal:replace="structure provider:plone.abovecontenttitle" />
 
-      <h1 class="documentFirstHeading" tal:condition="not: context/HideTitle|nothing"> 
+      <div tal:replace="structure provider:plone.abovecontent" />
+
+      <div class="wrapped">
+
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+        <h2 class="documentFirstHeading" tal:condition="not: context/HideTitle|nothing"> 
           <metal:field use-macro="python:here.widget('title', mode='view')">
-          Title
+            Title
           </metal:field>
-      </h1>
+        </h2>
 
-      <div tal:replace="structure provider:plone.belowcontenttitle" />
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
 
-      <p class="documentDescription" tal:condition="not: context/HideDescription|nothing">
+        <p class="documentDescription" tal:condition="not: context/HideDescription|nothing">
           <metal:field use-macro="python:here.widget('description', mode='view')">
-          Description
+            Description
           </metal:field>
-      </p>
+        </p>
 
-      <div tal:replace="structure provider:plone.abovecontentbody" />
+        <div tal:replace="structure provider:plone.abovecontentbody" />
 
-      <tal:text condition="text">
-        <metal:field use-macro="python:here.widget('text', mode='view')">
+        <div class="body" tal:condition="text">
+          <metal:field use-macro="python:here.widget('text', mode='view')">
             Body text
-        </metal:field>
-      </tal:text>
+          </metal:field>
+        </div>
   
-      <div tal:replace="structure provider:plone.belowcontentbody" />
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+
+      </div>
+
+      <div tal:replace="structure provider:plone.belowcontent" />
+
     </tal:all>
     <tal:simple condition="view/simple">
-      <h1 class="documentFirstHeading">
+
+      <div class="wrapped">
+
+        <h2 class="documentFirstHeading">
           <metal:field use-macro="python:here.widget('title', mode='view')">
-          Title
+            Title
           </metal:field>
-      </h1>
+        </h2>
+
+      </div>
     </tal:simple>
   </tal:main-macro>
 </html>

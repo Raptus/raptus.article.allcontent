@@ -11,6 +11,6 @@ Code overview
 Components
 ----------
 
-plone.belowcontentbody
-``````````````````````
+plone.belowcontent
+``````````````````
 - raptus.article.allcontent
