@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0a3 (unreleased)
+1.0a3 (2013-07-01)
 ------------------
 
 * Hide the raptus.article.toggle viewlet (introduced in raptus.article.core 2.0b13) in the
