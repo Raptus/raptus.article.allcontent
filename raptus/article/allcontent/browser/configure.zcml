@@ -19,6 +19,15 @@
         />
 
     <browser:viewlet
+        for="raptus.article.core.interfaces.IArticle"
+        name="raptus.article.toggle"
+        class=".empty.EmptyViewlet"
+        manager="plone.app.layout.viewlets.interfaces.IAboveContent"
+        permission="raptus.article.manageComponents"
+        view=".allcontent.AllcontentView"
+        />
+
+    <browser:viewlet
         name="plone.path_bar"
         manager="plone.app.layout.viewlets.interfaces.IAboveContent"
         class=".empty.EmptyViewlet"

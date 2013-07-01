@@ -12,9 +12,11 @@ from raptus.article.core import RaptusArticleMessageFactory as _
 from raptus.article.core import interfaces
 from raptus.article.nesting.interfaces import IArticles
 
+
 class IAllcontent(interface.Interface):
     """ Marker interface for the all content viewlet
     """
+
 
 class Component(object):
     """ Component which lists the articles with all their content
@@ -27,16 +29,17 @@ class Component(object):
     image = '++resource++allcontent.gif'
     interface = IAllcontent
     viewlet = 'raptus.article.allcontent'
-    
+
     def __init__(self, context):
         self.context = context
+
 
 class Viewlet(ViewletBase):
     """ Viewlet listing contained articles displayed with all their content
     """
     index = ViewPageTemplateFile('allcontent.pt')
     component = "allcontent"
-    
+
     def _class(self, brain, i, l, additional=[]):
         cls = additional
         if i == 0:
@@ -48,13 +51,13 @@ class Viewlet(ViewletBase):
         if i % 2 == 1:
             cls.append('even')
         return ' '.join(cls)
-    
+
     @memoize
     def articles(self):
         provider = IArticles(self.context)
         manageable = interfaces.IManageable(self.context)
         mship = getToolByName(self.context, 'portal_membership')
-        if mship.checkPermission(MANAGE_PERMISSION, self.context):
+        if interfaces.IArticleEditView.providedBy(self.view) and mship.checkPermission(MANAGE_PERMISSION, self.context):
             items = provider.getArticles()
         else:
             items = provider.getArticles(component=self.component)
@@ -73,12 +76,13 @@ class Viewlet(ViewletBase):
             i += 1
         return items
 
+
 class AllcontentView(BrowserView):
     """ Renders the content part of an article
     """
     interface.implements(interfaces.IArticleView)
     template = ViewPageTemplateFile('allcontent_view.pt')
-    
+
     def __call__(self, simple=False):
         self.simple = simple
         return self.template()

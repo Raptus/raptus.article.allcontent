@@ -4,6 +4,9 @@ Changelog
 1.0a3 (unreleased)
 ------------------
 
+* Hide the raptus.article.toggle viewlet (introduced in raptus.article.core 2.0b13) in the
+  allcontent view
+* Only show hidden articles when in editing mode (introduced in raptus.article.core 2.0b13)
 * Moved viewlet from plone.belowcontentbody to plone.belowcontent
 * Include plone.abovecontent and plone.belowcontent in allcontent view
 

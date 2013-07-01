@@ -24,6 +24,7 @@ setup(name='raptus.article.allcontent',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'raptus.article.core>2.0b12',
           'raptus.article.nesting',
           # -*- Extra requirements: -*-
       ],
